@@ -1,5 +1,5 @@
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
-const { getProjectById, getAllProjects } = require('./Project/queries');
+const { getProjectById, getAllProjects } = require('./project/queries');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
