@@ -1,5 +1,11 @@
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
-const { getProjectById, getAllProjects } = require('./project');
+const {
+  getProjectById,
+  getAllProjects,
+  addProject,
+  deleteProject,
+  updateProject,
+} = require('./project');
 const {
   getClientById,
   getAllClients,
@@ -22,6 +28,9 @@ const RootMutation = new GraphQLObjectType({
   fields: {
     addClient,
     deleteClient,
+    addProject,
+    deleteProject,
+    updateProject,
   },
 });
 

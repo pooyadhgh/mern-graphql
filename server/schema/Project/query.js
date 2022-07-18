@@ -1,16 +1,19 @@
 const { GraphQLList, GraphQLID } = require('graphql');
 const ProjectType = require('./types');
-const { projectsResolver, projectResolver } = require('./resolvers');
+const {
+  getAllProjectsResolver,
+  getProjectByIdResolver,
+} = require('./resolvers');
 
 const getProjectById = {
   type: ProjectType,
   args: { id: { type: GraphQLID } },
-  resolve: projectResolver,
+  resolve: getProjectByIdResolver,
 };
 
 const getAllProjects = {
   type: new GraphQLList(ProjectType),
-  resolve: projectsResolver,
+  resolve: getAllProjectsResolver,
 };
 
 module.exports = { getProjectById, getAllProjects };
