@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLID, GraphQLString } = require('graphql');
 const ClientType = require('../client/types');
-const { clientRelatedResolver } = require('../client/resolvers');
+const { getClientRelatedResolver } = require('../client/resolvers');
 
 const ProjectType = new GraphQLObjectType({
   name: 'Project',
@@ -11,7 +11,7 @@ const ProjectType = new GraphQLObjectType({
     status: { type: GraphQLString },
     client: {
       type: ClientType,
-      resolve: clientRelatedResolver,
+      resolve: getClientRelatedResolver,
     },
   }),
 });

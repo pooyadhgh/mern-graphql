@@ -1,15 +1,35 @@
 const Client = require('./model');
 
-const clientResolver = (parent, args) => {
+const getClientByIdResolver = (parent, args) => {
   return Client.findById(args.id);
 };
 
-const clientsResolver = () => {
+const getAllClientsResolver = () => {
   return Client.find();
 };
 
-const clientRelatedResolver = (parent, args) => {
-  return Client.findById(parent.clientId); // check again!!
+const getClientRelatedResolver = (parent, args) => {
+  return Client.findById(parent.clientId);
 };
 
-module.exports = { clientResolver, clientsResolver, clientRelatedResolver };
+const addClientResolver = (parent, args) => {
+  const client = new Client({
+    name: args.name,
+    email: args.email,
+    phone: args.phone,
+  });
+
+  return client.save();
+};
+
+const deleteClientResolver = (parent, args) => {
+  return Client.findByIdAndRemove(args.id);
+};
+
+module.exports = {
+  getClientByIdResolver,
+  getAllClientsResolver,
+  getClientRelatedResolver,
+  addClientResolver,
+  deleteClientResolver,
+};
