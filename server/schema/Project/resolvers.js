@@ -1,11 +1,11 @@
-const { projects } = require('../../data');
+const Project = require('./model');
 
 const projectResolver = (parent, args) => {
-  return projects.find((project) => project.id === args.id);
+  return Project.findById(args.id);
 };
 
 const projectsResolver = () => {
-  return projects;
+  return Project.find();
 };
 
 module.exports = { projectResolver, projectsResolver };

@@ -1,15 +1,15 @@
-const { clients } = require('../../data');
+const Client = require('./model');
 
 const clientResolver = (parent, args) => {
-  return clients.find((client) => client.id === args.id);
+  return Client.findById(args.id);
 };
 
 const clientsResolver = () => {
-  return clients;
+  return Client.find();
 };
 
 const clientRelatedResolver = (parent, args) => {
-  return clients.find((client) => client.id === parent.id);
+  return Client.findById(parent.clientId); // check again!!
 };
 
 module.exports = { clientResolver, clientsResolver, clientRelatedResolver };
