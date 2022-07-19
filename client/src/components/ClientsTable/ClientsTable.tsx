@@ -13,7 +13,7 @@ const ClientsTable: React.FC<Props> = ({ clients }) => {
     <Table striped>
       <thead>
         <tr>
-          <th>id</th>
+          <th>#</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
