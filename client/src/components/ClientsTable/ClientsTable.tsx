@@ -2,13 +2,14 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FaTrash } from 'react-icons/fa';
-import { Client } from '../../types';
+import { Client } from '@types';
 
 type Props = {
   clients: Client[];
+  onRemoveClient: (id: string) => void;
 };
 
-const ClientsTable: React.FC<Props> = ({ clients }) => {
+const ClientsTable: React.FC<Props> = ({ clients, onRemoveClient }) => {
   return (
     <Table striped>
       <thead>
@@ -28,7 +29,12 @@ const ClientsTable: React.FC<Props> = ({ clients }) => {
             <td>{email}</td>
             <td>{phone}</td>
             <td>
-              <Button variant='danger' size='sm' aria-label='Delete Client'>
+              <Button
+                variant='danger'
+                size='sm'
+                aria-label='Delete Client'
+                onClick={() => onRemoveClient(id)}
+              >
                 <FaTrash aria-hidden={true} />
               </Button>
             </td>

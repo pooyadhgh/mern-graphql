@@ -1,4 +1,4 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql');
 const ClientType = require('./types');
 const { addClientResolver, deleteClientResolver } = require('./resolvers');
 
@@ -15,7 +15,7 @@ const addClient = {
 const deleteClient = {
   type: ClientType,
   args: {
-    id: { type: GraphQLNonNull(GraphQLString) },
+    id: { type: GraphQLNonNull(GraphQLID) },
   },
   resolve: deleteClientResolver,
 };

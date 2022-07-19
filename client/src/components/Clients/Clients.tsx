@@ -1,14 +1,39 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Container from 'react-bootstrap/Container';
-import { ClientsQuery } from '@types';
+import { Client, ClientsQuery } from '@types';
 import { GET_CLIENTS } from '@graphql/queries';
+import { DELETE_CLIENT } from '@graphql/mutations';
 import ClientsTable from '@components/ClientsTable';
 import Spinner from '@components/Spinner';
 import Alert from '@components/Alert';
 
 const Clients: React.FC = () => {
   const { loading, error, data } = useQuery<ClientsQuery>(GET_CLIENTS);
+
+  const [deleteClient] = useMutation<{ deleteClient: Client }, { id: string }>(
+    DELETE_CLIENT,
+    {
+      update(cache, { data }) {
+        const cacheData = cache.readQuery<{ clients: Client[] }>({
+          query: GET_CLIENTS,
+        });
+
+        cache.writeQuery({
+          query: GET_CLIENTS,
+          data: {
+            clients: cacheData?.clients.filter(
+              (item) => item.id !== data?.deleteClient.id
+            ),
+          },
+        });
+      },
+    }
+  );
+
+  const onRemoveHandler = (id: string): void => {
+    deleteClient({ variables: { id } });
+  };
 
   if (loading) return <Spinner />;
 
@@ -18,7 +43,7 @@ const Clients: React.FC = () => {
   if (!loading && !error && data && data.clients) {
     return (
       <Container className='mt-5'>
-        <ClientsTable clients={data.clients} />
+        <ClientsTable clients={data.clients} onRemoveClient={onRemoveHandler} />
       </Container>
     );
   }

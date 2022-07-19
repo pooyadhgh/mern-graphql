@@ -1,17 +1,13 @@
 import React from 'react';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from '@graphql/apolloClient';
 import Header from '@components/Header';
 import Clients from '@components/Clients';
-
-const client = new ApolloClient({
-  uri: import.meta.env.VITE_API_URI,
-  cache: new InMemoryCache(),
-});
 
 const App: React.FC = () => {
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={apolloClient}>
         <Header />
         <Clients />
       </ApolloProvider>
