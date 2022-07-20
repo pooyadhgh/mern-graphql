@@ -21,7 +21,6 @@ const Modal: React.FC<Props> = ({
         show={shouldShowModal}
         onHide={onClose}
         backdrop='static'
-        keyboard={false}
         centered
       >
         <BootstrapModal.Header closeButton>
@@ -29,7 +28,7 @@ const Modal: React.FC<Props> = ({
         </BootstrapModal.Header>
         <BootstrapModal.Body>{children}</BootstrapModal.Body>
         <BootstrapModal.Footer>
-          <Button variant='secondary' onClick={onClose}>
+          <Button variant='light' onClick={onClose}>
             Close
           </Button>
         </BootstrapModal.Footer>

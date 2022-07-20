@@ -1,1 +1,1 @@
-export { DELETE_CLIENT } from './clientMutations';
+export { DELETE_CLIENT, ADD_CLIENT } from './clientMutations';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { Client, ClientsQuery } from '@types';
+import { Client } from '@types';
 import { GET_CLIENTS } from '@graphql/queries';
 import { DELETE_CLIENT } from '@graphql/mutations';
 import ClientsTable from '@components/ClientsTable';
@@ -8,7 +8,7 @@ import Spinner from '@components/Spinner';
 import Alert from '@components/Alert';
 
 const Clients: React.FC = () => {
-  const { loading, error, data } = useQuery<ClientsQuery>(GET_CLIENTS);
+  const { loading, error, data } = useQuery<{ clients: Client[] }>(GET_CLIENTS);
 
   const [deleteClient] = useMutation<{ deleteClient: Client }, { id: string }>(
     DELETE_CLIENT,
@@ -18,14 +18,16 @@ const Clients: React.FC = () => {
           query: GET_CLIENTS,
         });
 
-        cache.writeQuery({
-          query: GET_CLIENTS,
-          data: {
-            clients: cacheData?.clients.filter(
-              (item) => item.id !== data?.deleteClient.id
-            ),
-          },
-        });
+        if (cacheData && data) {
+          cache.writeQuery({
+            query: GET_CLIENTS,
+            data: {
+              clients: cacheData.clients.filter(
+                (item) => item.id !== data.deleteClient.id
+              ),
+            },
+          });
+        }
       },
     }
   );

@@ -18,7 +18,3 @@ export enum Status {
   InProgress = 'In Progress',
   Completed = 'Completed',
 }
-
-export type ClientsQuery = {
-  clients: Client[];
-};
