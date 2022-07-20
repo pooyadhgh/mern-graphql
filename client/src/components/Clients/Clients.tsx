@@ -1,6 +1,5 @@
 import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import Container from 'react-bootstrap/Container';
 import { Client, ClientsQuery } from '@types';
 import { GET_CLIENTS } from '@graphql/queries';
 import { DELETE_CLIENT } from '@graphql/mutations';
@@ -42,9 +41,7 @@ const Clients: React.FC = () => {
 
   if (!loading && !error && data && data.clients) {
     return (
-      <Container className='mt-5'>
-        <ClientsTable clients={data.clients} onRemoveClient={onRemoveHandler} />
-      </Container>
+      <ClientsTable clients={data.clients} onRemoveClient={onRemoveHandler} />
     );
   }
 

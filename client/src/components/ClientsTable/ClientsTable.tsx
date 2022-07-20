@@ -11,7 +11,7 @@ type Props = {
 
 const ClientsTable: React.FC<Props> = ({ clients, onRemoveClient }) => {
   return (
-    <Table striped>
+    <Table striped className='mt-5'>
       <thead>
         <tr>
           <th>#</th>
