@@ -5,6 +5,8 @@ import apolloClient from '@graphql/apolloClient';
 import Container from 'react-bootstrap/Container';
 import Header from '@components/Header';
 import Home from '@pages/Home';
+import NotFound from '@pages/NotFound';
+import Project from '@pages/Project';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +17,8 @@ const App: React.FC = () => {
           <Container className='my-5'>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/project/:id' element={<Project />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </Container>
         </Router>
