@@ -2,8 +2,11 @@
 $primary: #df3ca6;
 $secondary: #7430f9;
 
-.btn-outline-primary:hover {
-  color: #fff !important;
+.btn-outline-primary {
+  &:hover,
+  &:focus {
+    color: #fff !important;
+  }
 }
 
 @import 'bootstrap/scss/bootstrap';

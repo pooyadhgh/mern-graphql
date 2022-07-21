@@ -11,7 +11,7 @@ const Alert: React.FC<Props> = ({ children, variant }) => {
     <BootstrapAlert
       variant={variant}
       role='alert'
-      className='d-block w-75 m-auto'
+      className='d-block w-75 m-auto my-5'
     >
       {children}
     </BootstrapAlert>
