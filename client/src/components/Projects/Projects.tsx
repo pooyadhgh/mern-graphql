@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
   const { loading, error, data } = useQuery<{ projects: Project[] }>(
     GET_PROJECTS
   );
-  console.log({ loading, error, data });
+
   if (loading) return <Spinner />;
 
   if (error)
@@ -25,8 +25,8 @@ const Projects: React.FC = () => {
 
         <Row xs={1} sm={2} lg={3} className='mt-3 mb-5'>
           {data.projects.map((project) => (
-            <Col>
-              <ProjectCard key={project.id} {...project} />
+            <Col key={project.id}>
+              <ProjectCard {...project} />
             </Col>
           ))}
         </Row>

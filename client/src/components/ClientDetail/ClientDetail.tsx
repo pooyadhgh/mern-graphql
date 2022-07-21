@@ -10,17 +10,17 @@ const ClientDetail: React.FC<Client> = ({ name, email, phone }) => {
 
       <ListGroup as='ul'>
         <ListGroup.Item as='li'>
-          <FaIdBadge className='mx-1 text-muted icon' />
+          <FaIdBadge className='mx-1 text-muted' />
           <span className='px-1'>{name}</span>
         </ListGroup.Item>
 
         <ListGroup.Item as='li'>
-          <FaEnvelope className='mx-1 text-muted icon' />
+          <FaEnvelope className='mx-1 text-muted' />
           <span className='px-1'>{email}</span>
         </ListGroup.Item>
 
         <ListGroup.Item as='li'>
-          <FaPhone className='mx-1 text-muted icon' />
+          <FaPhone className='mx-1 text-muted' />
           <span className='px-1'>{phone}</span>
         </ListGroup.Item>
       </ListGroup>

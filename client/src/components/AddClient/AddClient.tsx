@@ -19,7 +19,7 @@ const AddClient: React.FC = () => {
     { name: string; email: string; phone: string }
   >(ADD_CLIENT, {
     variables: {
-      name: name.trim().toLowerCase(),
+      name: name.trim(),
       email: email.trim().toLowerCase(),
       phone: phone.trim().toLowerCase(),
     },
