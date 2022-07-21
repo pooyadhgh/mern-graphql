@@ -1,5 +1,5 @@
-import { Project } from '@types';
 import React from 'react';
+import { Project } from '@types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaUser, FaCheckSquare } from 'react-icons/fa';
