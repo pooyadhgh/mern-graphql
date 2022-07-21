@@ -21,12 +21,15 @@ const ProjectCard: React.FC<Project> = ({
 
         <Card.Text className='text-truncate'>
           <div className='d-flex align-items-center my-2'>
-            <FaUser className='mx-1 text-muted' aria-hidden='true' />
+            <FaUser className='mx-1 text-muted icon' aria-hidden='true' />
             <span className='px-1 text-muted'>{client?.name}</span>
           </div>
 
           <div className='d-flex align-items-center my-2'>
-            <FaCheckSquare className='mx-1 text-muted' aria-hidden='true' />
+            <FaCheckSquare
+              className='mx-1 text-muted icon'
+              aria-hidden='true'
+            />
             <span className='px-1 text-muted'>{status}</span>
           </div>
 
