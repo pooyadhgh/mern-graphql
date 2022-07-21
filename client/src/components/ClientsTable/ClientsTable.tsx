@@ -11,37 +11,41 @@ type Props = {
 
 const ClientsTable: React.FC<Props> = ({ clients, onRemoveClient }) => {
   return (
-    <Table striped className='mt-5'>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {clients.map(({ id, name, phone, email }, index) => (
-          <tr key={id}>
-            <td>{index + 1}</td>
-            <td>{name}</td>
-            <td>{email}</td>
-            <td>{phone}</td>
-            <td>
-              <Button
-                variant='danger'
-                size='sm'
-                aria-label='Delete Client'
-                onClick={() => onRemoveClient(id)}
-              >
-                <FaTrash aria-hidden={true} />
-              </Button>
-            </td>
+    <>
+      <h2 className='mt-4 h3'>Clients</h2>
+
+      <Table striped className='mt-5'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Delete</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {clients.map(({ id, name, phone, email }, index) => (
+            <tr key={id}>
+              <td>{index + 1}</td>
+              <td>{name}</td>
+              <td>{email}</td>
+              <td>{phone}</td>
+              <td>
+                <Button
+                  variant='danger'
+                  size='sm'
+                  aria-label='Delete Client'
+                  onClick={() => onRemoveClient(id)}
+                >
+                  <FaTrash aria-hidden={true} />
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 };
 

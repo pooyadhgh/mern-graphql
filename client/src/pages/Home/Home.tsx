@@ -6,7 +6,12 @@ import Projects from '@components/Projects';
 const Home: React.FC = () => {
   return (
     <>
-      <AddClient />
+      <h1 className='my-5 h2'>Home Page</h1>
+
+      <div className='d-flex gap-3'>
+        <AddClient />
+      </div>
+
       <Projects />
       <Clients />
     </>
