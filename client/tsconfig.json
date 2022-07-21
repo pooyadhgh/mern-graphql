@@ -19,7 +19,8 @@
     "paths": {
       "@types": ["./src/types.ts"],
       "@graphql/*": ["./src/graphql/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src"],

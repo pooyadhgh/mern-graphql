@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
 
   if (!loading && !error && data && data.projects) {
     return (
-      <Row xs={1} md={3} className='my-5'>
+      <Row xs={1} sm={2} lg={3} className='my-5'>
         {data.projects.map((project) => (
           <Col>
             <ProjectCard key={project.id} {...project} />

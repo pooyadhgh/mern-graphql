@@ -16,7 +16,7 @@ const ProjectCard: React.FC<Project> = ({
       <Card.Body>
         <Card.Title>{name}</Card.Title>
 
-        <Card.Text>
+        <Card.Text className='text-truncate'>
           <div className='d-flex align-items-center my-2'>
             <FaUser className='mx-1' aria-hidden='true' color='#999999' />
             <span className='px-1'>{client?.name}</span>
