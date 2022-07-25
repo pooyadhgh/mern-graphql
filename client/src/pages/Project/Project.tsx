@@ -35,7 +35,7 @@ const Project: React.FC = () => {
 
         <h1 className='my-5 h2'>{`Project #${id}`}</h1>
 
-        <ProjectDetail {...data.project} />
+        <ProjectDetail project={data.project} />
       </Container>
     );
   }

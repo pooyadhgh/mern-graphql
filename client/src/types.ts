@@ -14,7 +14,7 @@ export interface Project {
 }
 
 export enum Status {
-  New = 'Not Started',
-  InProgress = 'In Progress',
-  Completed = 'Completed',
+  New = 'new',
+  InProgress = 'progress',
+  Completed = 'completed',
 }

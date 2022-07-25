@@ -1,87 +1,59 @@
 import React, { useState } from 'react';
-import { FaList } from 'react-icons/fa';
-import { useMutation, useQuery } from '@apollo/client';
-import { ADD_PROJECT } from '@graphql/mutations';
-import { GET_CLIENTS, GET_PROJECTS } from '@graphql/queries';
-import Modal from '@components/Modal';
+import { useMutation } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Client, Project, Status } from '@types';
+import Modal from '@components/Modal';
+import { UPDATE_PROJECT } from '@graphql/mutations';
+import { GET_PROJECT } from '@graphql/queries';
+import { Project, Status } from '@types';
+import { mapProjectStatus } from '@utils';
 
-const AddProject: React.FC = () => {
-  const [shouldShowModal, setShouldShowModal] = useState<boolean>(false);
-  const [name, setName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [status, setStatus] = useState<Status>(Status.New);
-  const [clientId, setClientId] = useState<string>('');
+type Props = {
+  shouldShowModal: boolean;
+  onCloseModal: () => void;
+  project: Project;
+};
 
-  const { data: clientsData } = useQuery<{ clients: Client[] }>(GET_CLIENTS);
+const EditProject: React.FC<Props> = ({
+  shouldShowModal,
+  onCloseModal,
+  project,
+}) => {
+  const [name, setName] = useState<string>(project.name);
+  const [description, setDescription] = useState<string>(project.description);
+  const [status, setStatus] = useState<Status>(
+    mapProjectStatus(project.status)
+  );
 
-  const [addProject] = useMutation<
-    { addProject: Project },
-    { name: string; description: string; clientId: string; status: Status }
-  >(ADD_PROJECT, {
+  const [updateProject] = useMutation<
+    { updateProject: Project },
+    { name: string; description: string; id: string; status: Status }
+  >(UPDATE_PROJECT, {
     variables: {
-      name: name.trim(),
-      description: description.trim(),
-      clientId: clientId.trim(),
+      id: project.id,
+      name,
+      description,
       status,
     },
-    update(cache, { data }) {
-      const cacheData = cache.readQuery<{ projects: Project[] }>({
-        query: GET_PROJECTS,
-      });
-
-      if (cacheData && data) {
-        cache.writeQuery({
-          query: GET_PROJECTS,
-          data: {
-            projects: [...cacheData.projects, data.addProject],
-          },
-        });
-      }
-    },
+    refetchQueries: [{ query: GET_PROJECT, variables: { id: project.id } }],
   });
-
-  const modalCloseHandler = (): void => {
-    setShouldShowModal(false);
-    setName('');
-    setDescription('');
-    setClientId('');
-    setStatus(Status.New);
-  };
-
-  const buttonClickHandler = (): void => {
-    setShouldShowModal(true);
-  };
 
   const formSubmitHandler = (event: React.SyntheticEvent): void => {
     event.preventDefault();
-    addProject();
-    modalCloseHandler();
+    updateProject();
+    onCloseModal();
   };
 
   const isNameValid = name.length > 2;
   const isDescriptionValid = description.length > 4;
-  const isClientIdValid = clientId !== '';
-  const isButtonDisabled =
-    !isNameValid || !isDescriptionValid || !isClientIdValid;
+  const isButtonDisabled = !isNameValid || !isDescriptionValid;
 
   return (
     <>
-      <Button
-        variant='secondary'
-        onClick={buttonClickHandler}
-        className='text-white d-flex align-items-center p-2'
-      >
-        <FaList className='mx-1' aria-hidden='true' />
-        <span className='px-1'>Add Project</span>
-      </Button>
-
       <Modal
-        title='Add Project'
         shouldShowModal={shouldShowModal}
-        onClose={modalCloseHandler}
+        title='Update Project'
+        onClose={onCloseModal}
       >
         <Form>
           <Form.Group className='mb-3' controlId='name'>
@@ -113,27 +85,12 @@ const AddProject: React.FC = () => {
             <Form.Select
               onChange={(event) => setStatus(event.target.value as Status)}
               aria-required={true}
+              defaultValue={status}
               required
             >
               <option value={Status.New}>New</option>
               <option value={Status.InProgress}>In Progress</option>
               <option value={Status.Completed}>Completed</option>
-            </Form.Select>
-          </Form.Group>
-
-          <Form.Group className='mb-3' controlId='clientId'>
-            <Form.Label>Client</Form.Label>
-            <Form.Select
-              onChange={(event) => setClientId(event.target.value)}
-              aria-required={true}
-              required
-            >
-              <option value=''>Select a client</option>
-              {clientsData?.clients.map((client) => (
-                <option key={client.id} value={client.id}>
-                  {client.name}
-                </option>
-              ))}
             </Form.Select>
           </Form.Group>
 
@@ -170,7 +127,7 @@ const AddProject: React.FC = () => {
             disabled={isButtonDisabled}
             aria-disabled={isButtonDisabled}
           >
-            Add New Project
+            Update Project
           </Button>
         </Form>
       </Modal>
@@ -178,4 +135,4 @@ const AddProject: React.FC = () => {
   );
 };
 
-export default AddProject;
+export default EditProject;
