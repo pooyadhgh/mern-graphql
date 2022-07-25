@@ -35,7 +35,7 @@ const addProject = {
 const deleteProject = {
   type: ProjectType,
   args: {
-    id: { type: GraphQLNonNull(GraphQLString) },
+    id: { type: GraphQLNonNull(GraphQLID) },
   },
   resolve: deleteProjectResolver,
 };

@@ -8,7 +8,7 @@ const ClientDetail: React.FC<Client> = ({ name, email, phone }) => {
     <>
       <h2 className='mt-5 mb-3 h3'>Client Information</h2>
 
-      <ListGroup as='ul'>
+      <ListGroup as='ul' className='mb-5'>
         <ListGroup.Item as='li'>
           <FaIdBadge className='mx-1 text-muted' />
           <span className='px-1'>{name}</span>

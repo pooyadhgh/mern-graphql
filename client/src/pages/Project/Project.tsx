@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Spinner from '@components/Spinner';
 import Alert from '@components/Alert';
 import ProjectDetail from '@components/ProjectDetail';
-import ClientDetail from '@components/ClientDetail';
 import { Project as ProjectType } from '@types';
 
 const Project: React.FC = () => {
@@ -40,6 +39,7 @@ const Project: React.FC = () => {
       </Container>
     );
   }
+
   return null;
 };
 
