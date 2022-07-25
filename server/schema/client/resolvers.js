@@ -1,4 +1,5 @@
 const Client = require('./model');
+const Project = require('../project/model');
 
 const getClientByIdResolver = (parent, args) => {
   return Client.findById(args.id);
@@ -23,6 +24,11 @@ const addClientResolver = (parent, args) => {
 };
 
 const deleteClientResolver = (parent, args) => {
+  // Remove related projects
+  Project.find({ clientId: args.id }).then((projects) => {
+    projects.forEach((project) => project.remove());
+  });
+
   return Client.findByIdAndRemove(args.id);
 };
 
