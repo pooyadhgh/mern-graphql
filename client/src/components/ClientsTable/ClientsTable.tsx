@@ -17,7 +17,7 @@ const ClientsTable: React.FC<Props> = ({ clients, onRemoveClient }) => {
       {!clients.length ? (
         <p>No clients found</p>
       ) : (
-        <Table striped className='mt-5'>
+        <Table striped className='mt-3'>
           <thead>
             <tr>
               <th>#</th>

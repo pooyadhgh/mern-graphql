@@ -17,8 +17,10 @@ type Props = {
 
 const ProjectDetail: React.FC<Props> = ({ project }) => {
   const { name, description, status, client, id } = project;
+
   const navigate = useNavigate();
   const [shouldShowModal, setShouldShowModal] = useState<boolean>(false);
+
   const [deleteProject] = useMutation<
     { deleteProject: Project },
     { id: string }
