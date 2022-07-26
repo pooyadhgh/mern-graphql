@@ -1,8 +1,11 @@
 import { Status } from '@types';
 
-export const mapProjectStatus = (status: string) =>
-  status === 'Not Started'
-    ? Status.New
-    : status === 'In Progress'
-    ? Status.InProgress
-    : Status.Completed;
+export const mapProjectStatus = (status: string) => {
+  const mappedStatus: { [key: string]: string } = {
+    'Not Started': Status.New,
+    'In Progress': Status.InProgress,
+    Completed: Status.Completed,
+  };
+
+  return mappedStatus[status];
+};
