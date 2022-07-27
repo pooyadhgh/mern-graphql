@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
   if (error)
     return <Alert variant='danger'>Oops! Somethong went wrong...</Alert>;
 
-  if (!loading && !error && data && data.projects) {
+  if (!loading && !error && data?.projects) {
     return (
       <>
         <h2 className='mt-5 h3'>Projects</h2>

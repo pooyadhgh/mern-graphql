@@ -24,7 +24,7 @@ const Project: React.FC = () => {
   if (error)
     return <Alert variant='danger'>Oops! Somethong went wrong...</Alert>;
 
-  if (!loading && !error && data && data.project) {
+  if (!loading && !error && data?.project) {
     return (
       <Container>
         <LinkContainer to='/'>

@@ -26,7 +26,7 @@ const Clients: React.FC = () => {
   if (error)
     return <Alert variant='danger'>Oops! Somethong went wrong...</Alert>;
 
-  if (!loading && !error && data && data.clients) {
+  if (!loading && !error && data?.clients) {
     return (
       <ClientsTable clients={data.clients} onRemoveClient={onRemoveHandler} />
     );
