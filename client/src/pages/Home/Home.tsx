@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     <>
       <h1 className='my-5 h2'>Home Page</h1>
 
-      <Container className='d-flex gap-3 mx-0 px-0'>
+      <Container className='d-flex gap-3 mx-0 px-0 flex-wrap w-75' fluid>
         <Button
           variant='secondary'
           onClick={() => setModalOpen(ModalType.AddProject)}

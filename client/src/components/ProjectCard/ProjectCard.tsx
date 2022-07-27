@@ -19,17 +19,16 @@ const ProjectCard: React.FC<Project> = ({
           {name}
         </Card.Title>
 
+        <div className='d-flex align-items-center my-2'>
+          <FaUser className='mx-1 text-muted' aria-hidden='true' />
+          <span className='px-1 text-muted'>{client?.name}</span>
+        </div>
+
+        <div className='d-flex align-items-center my-2'>
+          <FaCheckSquare className='mx-1 text-muted' aria-hidden='true' />
+          <span className='px-1 text-muted'>{status}</span>
+        </div>
         <Card.Text as='div' className='text-truncate mb-3'>
-          <div className='d-flex align-items-center my-2'>
-            <FaUser className='mx-1 text-muted' aria-hidden='true' />
-            <span className='px-1 text-muted'>{client?.name}</span>
-          </div>
-
-          <div className='d-flex align-items-center my-2'>
-            <FaCheckSquare className='mx-1 text-muted' aria-hidden='true' />
-            <span className='px-1 text-muted'>{status}</span>
-          </div>
-
           {description}
         </Card.Text>
         <LinkContainer to={`/project/${id}`}>

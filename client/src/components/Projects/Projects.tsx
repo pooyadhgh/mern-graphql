@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
         {!data.projects.length ? (
           <p>No projects found</p>
         ) : (
-          <Row xs={1} sm={2} lg={3} className='mt-3 mb-5'>
+          <Row xs={1} sm={2} lg={3} className='my-3'>
             {data.projects.map((project) => (
               <Col key={project.id}>
                 <ProjectCard {...project} />
