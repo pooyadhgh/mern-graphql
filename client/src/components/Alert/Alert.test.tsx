@@ -1,14 +1,12 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Alert from './Alert';
 
 describe('Alert Component', () => {
   it('Should render with provided props', () => {
-    const alertMessage = 'Hello World';
+    render(<Alert variant='danger'>message</Alert>);
 
-    const { queryByText } = render(
-      <Alert variant='danger'>{alertMessage}</Alert>
-    );
+    const alertMessage = screen.queryByText('message');
 
-    expect(queryByText(alertMessage)).toBeInTheDocument();
+    expect(alertMessage).toBeInTheDocument();
   });
 });
