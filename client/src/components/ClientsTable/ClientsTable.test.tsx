@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import ClientsTable from './ClientsTable';
 import { client } from '@mocks';
 
@@ -31,6 +31,6 @@ describe('ClientsTable Component', () => {
 
     fireEvent.click(removeBtn);
 
-    waitFor(() => expect(removeClientHandler).toBeCalled());
+    expect(removeClientHandler).toBeCalled();
   });
 });

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Modal from './Modal';
 
 const mockTitle = 'title';
@@ -32,12 +32,10 @@ describe('Modal Component', () => {
     renderModal();
 
     const closeBtn = screen.getByText('Close');
-    const title = screen.queryByText('title');
 
     fireEvent.click(closeBtn);
 
-    waitFor(() => expect(title).not.toBeInTheDocument());
-    waitFor(() => expect(onCloseHandler).toBeCalled());
+    expect(onCloseHandler).toBeCalled();
   });
 
   it('Should not show component if shouldShowModal is false', () => {
