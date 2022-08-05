@@ -114,7 +114,8 @@ const EditProject: React.FC<Props> = ({
                 role='status'
                 aria-live='polite'
               >
-                Please enter a valid name contains more than 5 characters.
+                Please enter a valid description contains more than 5
+                characters.
               </Form.Text>
             )}
           </Form.Group>
