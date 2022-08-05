@@ -17,7 +17,7 @@ const spy = vitest.fn(() => ({
   },
 }));
 
-const deleteProjectData = [
+const updateProjectData = [
   {
     request: {
       query: UPDATE_PROJECT,
@@ -33,7 +33,7 @@ const deleteProjectData = [
 
 const renderProjectDetail = () =>
   render(
-    <MockedProvider mocks={deleteProjectData}>
+    <MockedProvider mocks={updateProjectData}>
       <Router>
         <ProjectDetail project={project} />
       </Router>
