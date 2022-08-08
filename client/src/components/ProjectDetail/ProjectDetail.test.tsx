@@ -1,11 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  within,
-} from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { UPDATE_PROJECT } from '@graphql/mutations';
 import { project } from '@mocks';
@@ -64,7 +58,7 @@ describe('Projects Component', () => {
 
     fireEvent.click(updateBtn);
 
-    const modal = await waitFor(() => screen.getByRole('dialog'));
+    const modal = await screen.findByRole('dialog');
 
     const modalUpdateBtn = within(modal).getByRole('button', {
       name: /update project/i,

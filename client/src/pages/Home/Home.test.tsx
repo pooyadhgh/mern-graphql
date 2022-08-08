@@ -1,7 +1,7 @@
 import { MockedProvider } from '@apollo/client/testing';
 import { GET_CLIENTS, GET_PROJECTS } from '@graphql/queries';
 import { client, project } from '@mocks';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './Home';
 
@@ -59,7 +59,7 @@ describe('Home Page', () => {
 
     fireEvent.click(addProjectBtn);
 
-    const modal = await waitFor(() => screen.getByRole('dialog'));
+    const modal = await screen.findByRole('dialog');
 
     expect(modal).toBeInTheDocument();
   });
