@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { ADD_CLIENT } from '@graphql/mutations';
-import { client } from '@mocks';
 import AddClient from './AddClient';
 
 const onCloseModal = () => vitest.fn();
