@@ -72,6 +72,7 @@ const renderAddProject = async () => {
     projectClientInput,
   };
 };
+
 describe('AddProject component', () => {
   it('Should render with provided props', async () => {
     const {
