@@ -2,7 +2,7 @@
 
 ![MERN-GrahphQL](https://raw.githubusercontent.com/pooyadhgh/mern-graphql/main/screenshots/desktop-view.png)
 
-An application with GraphQL API, developed with Javascript in backend with Epress.js and Typescript in frontend with React.js and Apollo client, connected to a MongoDB database. (MERN Stack)
+An application with GraphQL API, developed with Javascript in the backend with Epress.js and Typescript in frontend with React.js and Apollo client, connected to a MongoDB database. (MERN Stack)
 
 ### Features
 
@@ -13,14 +13,14 @@ An application with GraphQL API, developed with Javascript in backend with Epres
 ### Overall Architecture
 
 - The Backend and the Frontend are separated and run independently in different ports.
-- For simplicity sake, `express-graphql` package is used in the backend to define api schemas and `mongoose` is used to connect our Express.js app to MongoDB.
-- In the frontend, Hooks, utility functions, components, pages, and GraphQL files are provided in separate scalable directories.
-- The frontend application is created with [Vite](https://vitejs.dev/) instead of webpack. (See [Why](https://vitejs.dev/guide/why.html)) and [Vitest](https://vitest.dev/) is configured as the main test runner instead of `jest`, aligned with `react-testing-library`.
+- For simplicity's sake, the `express-graphql` package is used in the backend to define api schemas, and `mongoose` is used to connect our Express.js app to MongoDB.
+- In the front end, Hooks, utility functions, components, pages, and GraphQL files are provided in separate scalable directories.
+- The frontend application is created with [Vite](https://vitejs.dev/) instead of Webpack. (See [Why](https://vitejs.dev/guide/why.html)) and [Vitest](https://vitest.dev/) is configured as the main test runner instead of `jest`, aligned with `react-testing-library`.
 
 ### Accessibility
 
 - All elements are responsive to the viewport.
-- Best practices are used to create the forms, labels, and inputs for keyboard-only, non-sighted users or users who disable styles.
+- Best practices are used to create the forms, labels, and inputs for keyboard-only, non-sighted users, or users who disable styles.
 - Inputs have feedback while it is focused and proper label and placeholder to help users.
 - Elements are organized to easily navigate with assistive technology, like screen readers and keyboards.
 - Feedback (visual and text) is sent to the user in different situations.
